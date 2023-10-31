@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+</head>
+<body>
+    <h1>학생 리스트</h1>
+    <td><button type="button" th:onclick="|location.href='@{/student/add}'|">추가</button>
+    <hr>
+    <table>
+        <tr>
+            <th>학번</th>
+            <th>이름</th>
+            <th>전공</th>
+            <th>학점</th>
+        </tr>
+        <tr th:each="student : ${studentList}">
+            <td th:text="${student.studentId}">studentId</td>
+            <td th:text="${student.name}">name</td>
+            <td th:text="${student.major}">major</td>
+            <td th:text="${student.point}">point</td>
+            <td><button type="button" th:onclick="|location.href='@{/student/modify(studentId=${student.studentId})}'|">수정</button></td>
+            <td><button type="button" th:onclick="|location.href='@{/student/remove(studentId=${student.studentId})}'|">삭제</button></td>
+        </tr>
+    </table>
+</body>
+</html>

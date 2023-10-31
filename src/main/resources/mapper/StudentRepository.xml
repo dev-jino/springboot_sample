@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sample.repository.StudentRepository">
+    <select id="selectAllStudent" resultType="com.example.sample.model.Student">
+        select * from student
+    </select>
+    <select id="selectStudentById" resultType="com.example.sample.model.Student"
+            parameterType="int">
+        select * from student where studentId=#{studentId}
+    </select>
+    <insert id="insertStudent" useGeneratedKeys="true"
+            keyProperty="studentId" parameterType="com.example.sample.model.Student">
+        insert into student (name, major, point) values(#{name}, #{major}, #{point})
+    </insert>
+    <update id="updateStudent" parameterType="com.example.sample.model.Student">
+        update student set name=#{name}, major=#{major}, point=#{point}
+        where studentId=#{studentId}
+    </update>
+    <delete id="deleteStudent" parameterType="int">
+        delete from student where studentId=#{studentId}
+    </delete>
+</mapper>
